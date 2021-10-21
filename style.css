@@ -1,0 +1,25 @@
+#botonEmpezar{
+    margin-bottom: 20px;
+}
+.container{
+    display:flex;
+    width: 400px;
+    height:400px;
+  }
+  .boton{
+    width:200px;
+    height:200px;
+  }
+  .rojo{
+    background: red;
+  }
+  
+  .azul{
+    background: blue;
+  }
+  .amarillo{
+    background: yellow;
+  }
+  .verde{
+    background: green;
+  }
