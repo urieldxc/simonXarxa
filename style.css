@@ -23,3 +23,18 @@
   .verde{
     background: green;
   }
+
+  .elegido{
+    animation-name: seleccionado;
+    animation-duration: 2s;
+  }
+
+  @keyframes seleccionado{
+    0%{border: 4px solid rgb(255, 0, 0, 0);}
+    50%{border: 4px solid rgb(255, 0, 0);}
+    100%{border: 4px solid rgb(255, 0, 0, 0);}
+  }
+
+  .hidden{
+    display: none;
+  }
