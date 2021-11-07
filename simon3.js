@@ -116,6 +116,3 @@ function empezarJuego(){
 botonEmpezar.addEventListener('click', empezarJuego);
 contenedorCasilla.addEventListener('click', event => {
   const {casilla} = event.target.dataset;
-
-  if (casilla) eleccionJugador(casilla);
-})
