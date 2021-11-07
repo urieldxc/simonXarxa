@@ -16,6 +16,13 @@ function turnoUsuario(nivel) {
   info.textContent = `Tu nivel: ${nivel} pulsación`;
 }
 
+
+
+
+
+
+
+
 function siguienteRonda(){
     nivel +=1;
 
@@ -25,6 +32,9 @@ function siguienteRonda(){
 
     const siguienteSecuencia = [...arrayPC]
     siguienteSecuencia.push(siguientePaso());
+
+
+    
     jugarRonda(siguienteSecuencia);
 
     arrayPC = [...siguienteSecuencia];
@@ -32,7 +42,17 @@ function siguienteRonda(){
       turnoUsuario(nivel);
     }, nivel * 600 +1000);
 
+
 }
+
+
+
+
+
+
+
+
+
 
 function siguientePaso(){
     const colores = ["rojo","verde", "azul", "amarillo"]
