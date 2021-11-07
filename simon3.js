@@ -5,7 +5,8 @@ let botonVerde = document.getElementById("botonVerde");
 let botonAmarillo = document.getElementById("botonAmarillo");
 let botonAzul = document.getElementById("botonAzul");
 let contenedorCasilla = document.getElementById("contenedorCasilla");
-let info = document.getElementById("info");
+let info = document.getElementById("info"); //TODO: arreglar esto (HTML y JS)
+let cabecera = document.querySelector('.js-cabecera')
 
 let arrayPC = [];
 let arrayUsuario = [];
@@ -21,7 +22,7 @@ function siguienteRonda(){
 
     contenedorCasilla.classList.add('no-clicable');
     info.textContent = 'Espera tu turno...';
-    // heading.textContent = `Level ${level} of 20`
+    cabecera.textContent = `Nivel ${nivel} de 20`
 
     const siguienteSecuencia = [...arrayPC]
     siguienteSecuencia.push(siguientePaso());
@@ -66,8 +67,35 @@ function jugarRonda(siguienteSecuencia) {
 
   }
 
+  function eleccionJugador(casilla){
+  const index = arrayUsuario.push(casilla) - 1;
+  const sonido = document.querySelector(`[data-sound='${casilla}']`);
+  sonido.play();
+
+  const pulsacionesRestantes = arrayPC.length - arrayUsuario.length;
+
+  if (arrayUsuario.length === sequence.length){
+    arrayUsuario = [];
+    info.textContent = 'Felicidades! Puedes continuar!';
+    setTimeout(() => {
+      siguienteRonda();
+    }, 1000);
+    return;
+  }
+
+  info.textContent = `Tu turno: ${pulsacionesRestantes} pulsaciones`;
+}
+  
+
+
 function empezarJuego(){
     botonEmpezar.classList.add('hidden');
     siguienteRonda();
 }
+
 botonEmpezar.addEventListener('click', empezarJuego);
+contenedorCasilla.addEventListener('click', event => {
+  const {casilla} = event.target.dataset;
+
+  if (casilla) eleccionJugador(casilla);
+})
