@@ -1,16 +1,22 @@
 const botonEmpezar = document.getElementById("botonEmpezar");
+const contenedorCasilla = document.querySelector(".js-contenedor");
+const info = document.getElementById("info");
+const cabecera = document.querySelector('.js-cabecera')
+// const botonDificultad = document.querySelector('.botonDificultad');
 
-let botonRojo = document.getElementById("botonRojo");
-let botonVerde = document.getElementById("botonVerde");
-let botonAmarillo = document.getElementById("botonAmarillo");
-let botonAzul = document.getElementById("botonAzul");
-let contenedorCasilla = document.getElementById("contenedorCasilla");
-let info = document.getElementById("info"); //TODO: arreglar esto (HTML y JS)
-let cabecera = document.querySelector('.js-cabecera')
+const facil = document.getElementById("botonFacil");
+const medio = document.getElementById("botonMedio");
+const dificil = document.getElementById("botonDificil");
 
 let arrayPC = [];
 let arrayUsuario = [];
 let nivel = 0;
+let numeroTurnos = 3;
+
+
+
+
+
 
 function turnoUsuario(nivel) {
   contenedorCasilla.classList.remove('no-clicable');
@@ -19,8 +25,35 @@ function turnoUsuario(nivel) {
 
 
 
+function activarColor(color){
+  const casilla = document.querySelector(`[data-casilla='${color}']`);
+  const sonido = document.querySelector(`[data-sonido='${color}']`);
 
+  casilla.classList.add("activado");
+  sonido.play();
 
+  setTimeout(()=>{
+    casilla.classList.remove("activado");
+  }, 300);
+
+}
+
+function jugarRonda(siguienteSecuencia) {
+  siguienteSecuencia.forEach((color, indice) => {
+
+    setTimeout(() => {
+      activarColor(color);
+    }, (indice + 1) * 600);
+    
+    
+  });
+
+}
+function siguientePaso(){
+  const colores = ["rojo","verde", "azul", "amarillo"]
+  const valorRandom = colores[Math.floor(Math.random()*colores.length)];
+  return valorRandom
+}
 
 
 
@@ -46,61 +79,31 @@ function siguienteRonda(){
 
 }
 
-
-
-
-
-
-
-
-
-
-function siguientePaso(){
-    const colores = ["rojo","verde", "azul", "amarillo"]
-    const valorRandom = colores[Math.floor(Math.random()*colores.length)];
-    return valorRandom
-}
-
-
-
-function activarColor(color){
-    const casilla = document.querySelector(`[data-tile='${color}']`);
-    const sonido = document.querySelector(`[data-sound='${color}']`);
-
-    casilla.classList.add("activado");
+  function eleccionJugador(casilla){
+    const indice = arrayUsuario.push(casilla) - 1;
+    const sonido = document.querySelector(`[data-sonido='${casilla}']`);
     sonido.play();
 
-    setTimeout(()=>{
-        casilla.classList.remove("activado");
-    }, 300);
+    const pulsacionesRestantes = arrayPC.length - arrayUsuario.length;
 
-}
+    if(arrayUsuario[indice] !== arrayPC[indice]){
+      resetearJuego("Ups, has perdido");
+      return;
+    }
 
-function jugarRonda(siguienteSecuencia) {
-    siguienteSecuencia.forEach((color, indice) => {
+    if (arrayUsuario.length === numeroTurnos) {
+      resetearJuego('Felicidades, menuda memoria, te has pasado el juego, titán');
+      return
+    }
 
+    if (arrayUsuario.length === arrayPC.length){
+      arrayUsuario = [];
+      info.textContent = 'Felicidades! Puedes continuar!';
       setTimeout(() => {
-        activarColor(color);
-      }, (indice + 1) * 600);
+        siguienteRonda();
+      }, 1000);
       
-    });
-
-  }
-
-  function eleccionJugador(casilla){
-  const index = arrayUsuario.push(casilla) - 1;
-  const sonido = document.querySelector(`[data-sound='${casilla}']`);
-  sonido.play();
-
-  const pulsacionesRestantes = arrayPC.length - arrayUsuario.length;
-
-  if (arrayUsuario.length === sequence.length){
-    arrayUsuario = [];
-    info.textContent = 'Felicidades! Puedes continuar!';
-    setTimeout(() => {
-      siguienteRonda();
-    }, 1000);
-    return;
+      return;
   }
 
   info.textContent = `Tu turno: ${pulsacionesRestantes} pulsaciones`;
@@ -110,9 +113,27 @@ function jugarRonda(siguienteSecuencia) {
 
 function empezarJuego(){
     botonEmpezar.classList.add('hidden');
+    info.classList.remove('hidden');
+    info.textContent = 'Espera al PC'
     siguienteRonda();
+    
 }
 
 botonEmpezar.addEventListener('click', empezarJuego);
 contenedorCasilla.addEventListener('click', event => {
-  const {casilla} = event.target.dataset;
+  const { casilla } = event.target.dataset;
+  // alert("A");
+  if (casilla) eleccionJugador(casilla);
+})
+
+function resetearJuego(texto){
+  alert(texto);
+  arrayPC=[];
+  arrayUsuario=[];
+  nivel = 0;
+  botonEmpezar.classList.remove("hidden");
+  cabecera.textContent = "Simon";
+  info.classList.add("hidden");
+  contenedorCasilla.classList.add("no-clicable")
+}
+

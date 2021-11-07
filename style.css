@@ -1,15 +1,21 @@
 .cabecera {
   font-size: 3em;
 }
-
+body{
+  font-family: tahoma;
+}
 #botonEmpezar{
     margin-bottom: 20px;
+    height: 60px;
+    width: 415px;
+    margin-top: 20px;
+    font-size: 1.5rem;
 }
 .contenedorCasilla {
   display: grid;
   grid-template-rows: 180px 180px;
   grid-template-columns: 180px 180px;
-  grid-gap: 25px;
+  grid-gap: 30px;
   position: relative;
   margin-top: 30px;
   margin-bottom: 40px;
@@ -21,10 +27,12 @@
     width:200px;
     height:200px;
 }
+
 .casilla-rojo {
     background-color: #f25022;
     box-shadow: 0 0 0 1px #f25022 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #c93a12, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
     transition: 0.15s;
+    border-radius: 100% 0% 0% 0%;
 }
   
   .casilla-rojo:hover,
@@ -44,6 +52,7 @@
     background-color: #7fba00;
     box-shadow: 0 0 0 1px #7fba00 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #638f05, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
     transition: 0.15s;
+    border-radius: 0% 100% 0% 0%;
   }
   
   .casilla-verde:hover,
@@ -63,6 +72,7 @@
     background-color: #ffb900;
     box-shadow: 0 0 0 1px #ffb900 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #c28e07, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
     transition: 0.15s;
+    border-radius: 0% 0% 100% 0%;
   }
   
   .casilla-amarillo:hover,
@@ -82,6 +92,7 @@
     background-color: #00a4ef;
     box-shadow: 0 0 0 1px #00a4ef inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #0883bc, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
     transition: 0.15s;
+    border-radius: 0% 0% 0% 100%;
   }
   
   .casilla-azul:hover,
