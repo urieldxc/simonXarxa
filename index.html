@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OLA</title>
+  <title>XarxaSimon</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -14,15 +14,22 @@
   <h1>Simon</h1>   
   <div class="opciones">
     <button id="botonEmpezar">Empezar</button>  
-    <button id="botonComprobar">COMPROBAR</button>  
+    <span id="info" class="info js-info hidden"></span> 
   </div>
 
-  <div class="container">
-    <div id="botonRojo" class="boton rojo">1</div>
-    <div id="botonVerde" class="boton verde">2</div>
-    <div id="botonAzul" class="boton azul">3</div>
-    <div id="botonAmarillo" class="boton amarillo">4</div>
+  <div id="contenedorCasilla" class="contenedorCasilla no-clicable">
+    <div id="botonRojo" class="casilla casilla-rojo" data-tile="rojo"></div>
+    <div id="botonVerde" class="casilla casilla-verde" data-tile="verde"></div>
+    <div id="botonAzul" class="casilla casilla-azul" data-tile="azul"></div>
+    <div id="botonAmarillo" class="casilla casilla-amarillo" data-tile="amarillo"></div>
   </div>
- <script src="simon2.js"></script>
+
+ <script src="simon3.js"></script>
+
+  <audio id="sonidoRojo" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" data-sound="rojo" ></audio>
+  <audio id="sonidoVerde" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" data-sound="verde" ></audio>
+  <audio id="sonidoAzul" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" data-sound="azul" ></audio>
+  <audio id="sonidoAmarillo" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" data-sound="amarillo" ></audio>
+
 </body>
 </html>
