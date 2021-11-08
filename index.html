@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XarxaSimon</title>
+  <title>Simon Xarxa</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 
 <body>
-  
-
   <div class="contenedor">
     <h1 class="cabecera js-cabecera">Simon Xarxatec</h1>  
 
       <div class="botonesDificultad">
-        <button id="botonFacil" class="botonDificultad" data-dificultad="facil"> Fácil</button>
-        <button id="botonMedio" class="botonDificultad" data-dificultad="medio"> Medio</button>
-        <button id="botonDificil" class="botonDificultad" data-dificultad="dificil"> Dificil</button>
+        <button id="botonFacil" class="botonDificultad"> Fácil</button>
+        <button id="botonMedio" class="botonDificultad"> Medio</button>
+        <button id="botonDificil" class="botonDificultad"> Dificil</button>
       </div> 
     
       <div id="contenedorCasilla" class="contenedorCasilla js-contenedor no-clicable">
-        <div id="botonRojo" class="casilla casilla-rojo" data-casilla="rojo"></div>
-        <div id="botonVerde" class="casilla casilla-verde" data-casilla="verde"></div>
-        <div id="botonAzul" class="casilla casilla-azul" data-casilla="azul"></div>
-        <div id="botonAmarillo" class="casilla casilla-amarillo" data-casilla="amarillo"></div>
+        <div class="casilla casilla-rojo" data-casilla="rojo"></div>
+        <div class="casilla casilla-verde" data-casilla="verde"></div>
+        <div class="casilla casilla-azul" data-casilla="azul"></div>
+        <div class="casilla casilla-amarillo" data-casilla="amarillo"></div>
       </div>
+
       <div class="tapiz"></div>
+
       <div class="opciones">
         <button id="botonEmpezar">Empezar</button>  
         <span id="info" class="info js-info hidden"></span> 
@@ -37,19 +37,12 @@
       
     
     <div class="hidden">
-    
       <audio id="sonidoRojo" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" data-sonido="rojo" ></audio>
       <audio id="sonidoVerde" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" data-sonido="verde" ></audio>
       <audio id="sonidoAzul" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" data-sonido="azul" ></audio>
       <audio id="sonidoAmarillo" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" data-sonido="amarillo" ></audio>
-      
-    
     </div>
-
-    
   </div>
-  
-
- <script src="simon3.js"></script>
+ <script src="simon.js"></script>
 </body>
 </html>

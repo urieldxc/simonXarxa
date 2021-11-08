@@ -1,113 +1,128 @@
-let botonRojo = document.getElementById("botonRojo");
-let botonVerde = document.getElementById("botonVerde");
-let botonAmarillo = document.getElementById("botonAmarillo");
-let botonAzul = document.getElementById("botonAzul");
-let botonEmpezar = document.getElementById("botonEmpezar");
-let botonComprobar = document.getElementById("botonComprobar");
+const botonEmpezar = document.getElementById("botonEmpezar");
+const contenedorCasilla = document.querySelector(".js-contenedor");
+const info = document.getElementById("info");
+const cabecera = document.querySelector('.js-cabecera')
+const facil = document.getElementById("botonFacil");
+const medio = document.getElementById("botonMedio");
+const dificil = document.getElementById("botonDificil");
 
 let arrayPC = [];
 let arrayUsuario = [];
-let numeroTurnos = 1;
-let valorBoton;
+let nivel = 0;
+let numeroTurnos = 3;
 
 
-/*AQUI EMPIEZA EL JUEGO, ES EL PASO n1 */
+/*Por refactorizar*/
+
+  facil.addEventListener("click", () =>{numeroTurnos = 10;})
+  medio.addEventListener("click", () =>{numeroTurnos = 20;})
+  dificil.addEventListener("click", () =>{numeroTurnos = 30;})
+
+function turnoUsuario(nivel) {
+  contenedorCasilla.classList.remove('no-clicable');
+  info.textContent = `Tu nivel: ${nivel} pulsación`;
+}
+
+function activarColor(color){
+  const casilla = document.querySelector(`[data-casilla='${color}']`);
+  const sonido = document.querySelector(`[data-sonido='${color}']`);
+
+  casilla.classList.add("activado");
+  sonido.play();
+
+  setTimeout(()=>{
+    casilla.classList.remove("activado");
+  }, 300);
+
+}
+
+function jugarRonda(siguienteSecuencia) {
+  siguienteSecuencia.forEach((color, indice) => {
+
+    setTimeout(() => {
+      activarColor(color);
+    }, (indice + 1) * 600);
+    
+    
+  });
+
+}
+function siguientePaso(){
+  const colores = ["rojo","verde", "azul", "amarillo"]
+  const valorRandom = colores[Math.floor(Math.random()*colores.length)];
+  return valorRandom
+}
+
+function siguienteRonda(){
+    nivel +=1;
+
+    contenedorCasilla.classList.add('no-clicable');
+    info.textContent = 'Espera tu turno...';
+    cabecera.textContent = `Nivel ${nivel} de ${numeroTurnos}`
+
+    const siguienteSecuencia = [...arrayPC]
+    siguienteSecuencia.push(siguientePaso());
+
+
+    
+    jugarRonda(siguienteSecuencia);
+
+    arrayPC = [...siguienteSecuencia];
+    setTimeout(()=>{
+      turnoUsuario(nivel);
+    }, nivel * 600 +1000);
+}
+
+  function eleccionJugador(casilla){
+    const indice = arrayUsuario.push(casilla) - 1;
+    const sonido = document.querySelector(`[data-sonido='${casilla}']`);
+    sonido.play();
+    const pulsacionesRestantes = arrayPC.length - arrayUsuario.length;
+    if(arrayUsuario[indice] !== arrayPC[indice]){
+      resetearJuego("Ups, has perdido");
+      return;
+    }
+
+    if (arrayUsuario.length === numeroTurnos) {
+      resetearJuego('Felicidades, menuda memoria, te has pasado el juego, titán');
+      return
+    }
+
+    if (arrayUsuario.length === arrayPC.length){
+      arrayUsuario = [];
+      info.textContent = 'Felicidades! Puedes continuar!';
+      setTimeout(() => {
+        siguienteRonda();
+      }, 1000);
+      
+      return;
+  }
+  info.textContent = `Tu turno: ${pulsacionesRestantes} pulsaciones`;
+}
+  
 
 function empezarJuego(){
-    eleccionPC();   
-    turnoDelPC();
-
-    botonRojo.addEventListener("click", ()=>{
-        valorBoton = 1;
-        eleccionUsuario();
-
-    })
-    botonVerde.addEventListener("click", ()=>{
-        valorBoton = 2;
-        eleccionUsuario();
-
-    })
-    botonAzul.addEventListener("click", ()=>{
-        valorBoton = 3;
-        eleccionUsuario();
-
-    })
-    botonAmarillo.addEventListener("click", ()=>{
-        valorBoton = 4;
-        eleccionUsuario();
-
-    })
+    botonEmpezar.classList.add('hidden');
+    info.classList.remove('hidden');
+    info.textContent = 'Espera al PC'
+    siguienteRonda();
+    
 }
 
+botonEmpezar.addEventListener('click', empezarJuego);
+contenedorCasilla.addEventListener('click', event => {
+  const { casilla } = event.target.dataset;
+  if (casilla) eleccionJugador(casilla);
+})
 
-
-
-/*4- Comparar*/
-
-    function comparacionElecciones(i){
-        if (arrayPC[i] == arrayUsuario[i]) alert("Has ganado");
-        if (arrayPC[i] != arrayUsuario[i]) alert("Has perdido");
-    }
-
-
-
-    botonEmpezar.addEventListener("click", () =>{
-        empezarJuego();
-    })
-
-    botonComprobar.addEventListener("click", () =>{
-        recorrerVectores();
-    })
-
-/*VIGILAR */
-
-
-function recorrerVectores(){
-    for(let i = 0; i < numeroTurnos; i++){
-        turnoDelPC();
-        for(let a = 0; a < arrayPC.length; a++){
-            turnoDelPC();
-            comparacionElecciones(a);
-            
-        }
-        eleccionPC();
-    }
+function resetearJuego(texto){
+  alert(texto);
+  arrayPC=[];
+  arrayUsuario=[];
+  nivel = 0;
+  botonEmpezar.classList.remove("hidden");
+  cabecera.textContent = "Simon Xarxatec";
+  info.classList.add("hidden");
+  contenedorCasilla.classList.add("no-clicable")
 }
-/*COLORES */
 
-    function turnoDelPC(){
-        arrayPC.forEach(e => {
-            asignarColor(e);
-            // quitarColor(e);
-        })
-    }
-
-
-    function asignarColor(numero){
-        if(numero == 1) botonRojo.classList.add("elegido");
-        if(numero == 2) botonVerde.classList.add("elegido");
-        if(numero == 3) botonAzul.classList.add("elegido");
-        if(numero == 4) botonAmarillo.classList.add("elegido");
-    }
-
-    // function quitarColor(numero){
-    //     if(numero == 1) botonRojo.classList.remove("elegido");
-    //     if(numero == 2) botonVerde.classList.remove("elegido");
-    //     if(numero == 3) botonAzul.classList.remove("elegido");
-    //     if(numero == 4) botonAmarillo.classList.remove("elegido");
-    // }
-
-
-    function numeroRandom(){
-        return Math.floor(Math.random()*(5-1))+1;
-    }
-    
-    function eleccionPC(){
-        arrayPC.push(numeroRandom());
-    }
-    
-    
-    function eleccionUsuario(){
-        arrayUsuario.push(valorBoton);
-    }
-    
