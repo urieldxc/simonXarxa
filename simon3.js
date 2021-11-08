@@ -14,6 +14,20 @@ let nivel = 0;
 let numeroTurnos = 3;
 
 
+/*Por refactorizar, no hemos tenido tiempo.*/
+
+facil.addEventListener("click", () =>{
+  numeroTurnos = 10;
+  console.log(numeroTurnos)
+})
+medio.addEventListener("click", () =>{
+  numeroTurnos = 20;
+  console.log(numeroTurnos)
+})
+dificil.addEventListener("click", () =>{
+  numeroTurnos = 30;
+  console.log(numeroTurnos)
+})
 
 
 
@@ -62,7 +76,7 @@ function siguienteRonda(){
 
     contenedorCasilla.classList.add('no-clicable');
     info.textContent = 'Espera tu turno...';
-    cabecera.textContent = `Nivel ${nivel} de 20`
+    cabecera.textContent = `Nivel ${nivel} de ${numeroTurnos}`
 
     const siguienteSecuencia = [...arrayPC]
     siguienteSecuencia.push(siguientePaso());
@@ -122,7 +136,6 @@ function empezarJuego(){
 botonEmpezar.addEventListener('click', empezarJuego);
 contenedorCasilla.addEventListener('click', event => {
   const { casilla } = event.target.dataset;
-  // alert("A");
   if (casilla) eleccionJugador(casilla);
 })
 
@@ -132,7 +145,7 @@ function resetearJuego(texto){
   arrayUsuario=[];
   nivel = 0;
   botonEmpezar.classList.remove("hidden");
-  cabecera.textContent = "Simon";
+  cabecera.textContent = "Simon Xarxatec";
   info.classList.add("hidden");
   contenedorCasilla.classList.add("no-clicable")
 }

@@ -11,37 +11,44 @@
 
 
 <body>
-  <h1 class="cabecera js-cabecera">Simon</h1>  
-
-  <div class="botonesDificultad">
-    <button id="botonFacil" class="botonDificultad" data-dificultad="facil"> Fácil</button>
-    <button id="botonMedio" class="botonDificultad" data-dificultad="medio"> Medio</button>
-    <button id="botonDificil" class="botonDificultad" data-dificultad="dificil"> Dificil</button>
-  </div> 
-
-  <div id="contenedorCasilla" class="contenedorCasilla js-contenedor no-clicable">
-    <div id="botonRojo" class="casilla casilla-rojo" data-casilla="rojo"></div>
-    <div id="botonVerde" class="casilla casilla-verde" data-casilla="verde"></div>
-    <div id="botonAzul" class="casilla casilla-azul" data-casilla="azul"></div>
-    <div id="botonAmarillo" class="casilla casilla-amarillo" data-casilla="amarillo"></div>
-  </div>
-
-  <div class="opciones">
-    <button id="botonEmpezar">Empezar</button>  
-    <span id="info" class="info js-info hidden"></span> 
-  </div>
-
   
 
-<div class="hidden">
+  <div class="contenedor">
+    <h1 class="cabecera js-cabecera">Simon Xarxatec</h1>  
 
-  <audio id="sonidoRojo" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" data-sonido="rojo" ></audio>
-  <audio id="sonidoVerde" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" data-sonido="verde" ></audio>
-  <audio id="sonidoAzul" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" data-sonido="azul" ></audio>
-  <audio id="sonidoAmarillo" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" data-sonido="amarillo" ></audio>
+      <div class="botonesDificultad">
+        <button id="botonFacil" class="botonDificultad" data-dificultad="facil"> Fácil</button>
+        <button id="botonMedio" class="botonDificultad" data-dificultad="medio"> Medio</button>
+        <button id="botonDificil" class="botonDificultad" data-dificultad="dificil"> Dificil</button>
+      </div> 
+    
+      <div id="contenedorCasilla" class="contenedorCasilla js-contenedor no-clicable">
+        <div id="botonRojo" class="casilla casilla-rojo" data-casilla="rojo"></div>
+        <div id="botonVerde" class="casilla casilla-verde" data-casilla="verde"></div>
+        <div id="botonAzul" class="casilla casilla-azul" data-casilla="azul"></div>
+        <div id="botonAmarillo" class="casilla casilla-amarillo" data-casilla="amarillo"></div>
+      </div>
+      <div class="tapiz"></div>
+      <div class="opciones">
+        <button id="botonEmpezar">Empezar</button>  
+        <span id="info" class="info js-info hidden"></span> 
+      </div>
+    
+      
+    
+    <div class="hidden">
+    
+      <audio id="sonidoRojo" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" data-sonido="rojo" ></audio>
+      <audio id="sonidoVerde" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" data-sonido="verde" ></audio>
+      <audio id="sonidoAzul" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" data-sonido="azul" ></audio>
+      <audio id="sonidoAmarillo" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" data-sonido="amarillo" ></audio>
+      
+    
+    </div>
+
+    
+  </div>
   
-
-</div>
 
  <script src="simon3.js"></script>
 </body>

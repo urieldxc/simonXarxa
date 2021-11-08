@@ -1,109 +1,170 @@
-.cabecera {
-  font-size: 3em;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 body{
-  font-family: tahoma;
+  font-family: 'Roboto', sans-serif;
+  background: rgb(236, 236, 229);
 }
+.tapiz{
+  width: 410px;
+  height: 420px;
+  background: rgb(65, 59, 59);
+  border-radius: 50%;
+  position: absolute;
+  top:233.5px;
+  left:99px;
+  z-index: -1;
+}
+
+.contenedor{
+  width: 400px;
+  padding-left: 6em;
+}
+.cabecera {
+  font-size: 3.5em;
+  display: flex;
+  justify-content: space-evenly;
+}
+.botonesDificultad{
+  width: auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+.botonDificultad{
+  width: 32%;
+  height: 60px;
+  font-size: 1.5em;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.opciones .info{
+  display: grid;
+}
+.info{
+  font-size: 1.8rem;
+  justify-content: center;
+  font-weight: 700;
+}
+
 #botonEmpezar{
     margin-bottom: 20px;
     height: 60px;
-    width: 415px;
+    width: 100%;
     margin-top: 20px;
     font-size: 1.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
 }
 .contenedorCasilla {
   display: grid;
   grid-template-rows: 180px 180px;
   grid-template-columns: 180px 180px;
-  grid-gap: 30px;
-  position: relative;
-  margin-top: 30px;
-  margin-bottom: 40px;
+  grid-gap: 12px;
+  margin-top: 50px;
+  margin-bottom: 60px;
+  justify-content: center;
 }
 .no-clicable {
   pointer-events: none;
 }
 .casilla{
-    width:200px;
-    height:200px;
+    width:180px;
+    height:180px;
 }
 
 .casilla-rojo {
     background-color: #f25022;
-    box-shadow: 0 0 0 1px #f25022 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #c93a12, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px #f25022 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+     0 8px 0 0 #c93a12, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
     transition: 0.15s;
     border-radius: 100% 0% 0% 0%;
 }
   
-  .casilla-rojo:hover,
-  .casilla-rojo:focus {
+
+
+.casilla-rojo:hover, .casilla-rojo:focus {
     background-color: #ff451a;
-    box-shadow: 0 0 0 1px #FF3000 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 10px 0 0 #e62b00, 0 10px 0 1px rgba(0, 0, 0, 0.4), 0 10px 8px 1px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 0 1px #FF3000 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+     0 10px 0 0 #e62b00, 0 10px 0 1px rgba(0, 0, 0, 0.4), 0 10px 8px 1px rgba(0, 0, 0, 0.6);
   }
   
-  .casilla-rojo:active,
-  .casilla-rojo.activado {
-    box-shadow: 0 0 0 1px #ff5c36 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+  .casilla-rojo:active, .casilla-rojo.activado {
+    box-shadow: 0 0 0 1px #ff5c36 inset,
+     0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+     0 0 0 1px rgba(0, 0, 0, 0.4);
     background-color: #ff5c36;
     transform: translateY(10px);
-  }
+}
   
   .casilla-verde {
     background-color: #7fba00;
-    box-shadow: 0 0 0 1px #7fba00 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #638f05, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px #7fba00 inset,
+     0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #638f05,
+      0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
     transition: 0.15s;
     border-radius: 0% 100% 0% 0%;
   }
   
-  .casilla-verde:hover,
-  .casilla-verde:focus {
+
+  .casilla-verde:hover, .casilla-verde:focus {
     background-color: #8cc218;
-    box-shadow: 0 0 0 1px #8cc218 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 10px 0 0 #74a802, 0 10px 0 1px rgba(0, 0, 0, 0.4), 0 10px 8px 1px rgba(0, 0, 0, 0.6)
+    box-shadow: 0 0 0 1px #8cc218 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+     0 10px 0 0 #74a802, 0 10px 0 1px rgba(0, 0, 0, 0.4), 0 10px 8px 1px rgba(0, 0, 0, 0.6)
   }
   
-  .casilla-verde:active,
-  .casilla-verde.activado {
-    box-shadow: 0 0 0 1px #a0ea00 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+.casilla-verde:active, .casilla-verde.activado {
+    box-shadow: 0 0 0 1px #a0ea00 inset,
+     0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+     0 0 0 1px rgba(0, 0, 0, 0.4);
     background-color: #a0ea00;
     transform: translateY(10px);
   }
   
-  .casilla-amarillo {
+
+
+
+.casilla-amarillo {
     background-color: #ffb900;
-    box-shadow: 0 0 0 1px #ffb900 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #c28e07, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px #ffb900 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+     0 8px 0 0 #c28e07, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
     transition: 0.15s;
     border-radius: 0% 0% 100% 0%;
   }
   
-  .casilla-amarillo:hover,
-  .casilla-amarillo:focus {
+  .casilla-amarillo:hover, .casilla-amarillo:focus {
     background-color: #ffb900;
-    box-shadow: 0 0 0 1px #ffb900 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #c28e07, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px #ffb900 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+     0 8px 0 0 #c28e07, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
   }
   
-  .casilla-amarillo:active,
-  .casilla-amarillo.activado {
-    box-shadow: 0 0 0 1px #ffca3d inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+  .casilla-amarillo:active, .casilla-amarillo.activado {
+    box-shadow: 0 0 0 1px #ffca3d inset,
+     0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+     0 0 0 1px rgba(0, 0, 0, 0.4);
     background-color: #ffca3d;
     transform: translateY(10px);
   }
   
   .casilla-azul {
     background-color: #00a4ef;
-    box-shadow: 0 0 0 1px #00a4ef inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #0883bc, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px #00a4ef inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+     0 8px 0 0 #0883bc, 0 8px 0 1px rgba(0, 0, 0, 0.4),
+      0 8px 8px 1px rgba(0, 0, 0, 0.5);
     transition: 0.15s;
     border-radius: 0% 0% 0% 100%;
   }
   
-  .casilla-azul:hover,
-  .casilla-azul:focus {
+ .casilla-azul:hover, .casilla-azul:focus {
     background-color: #139ddd;
-    box-shadow: 0 0 0 1px #139ddd inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 10px 0 0 #0c7cb0, 0 10px 0 1px rgba(0, 0, 0, 0.4), 0 10px 8px 1px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 0 1px #139ddd inset,
+     0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+     0 10px 0 0 #0c7cb0, 0 10px 0 1px rgba(0, 0, 0, 0.4), 0 10px 8px 1px rgba(0, 0, 0, 0.6);
   }
   
-  .casilla-azul:active,
-  .casilla-azul.activado {
-    box-shadow: 0 0 0 1px #2bbcff inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+.casilla-azul:active, .casilla-azul.activado {
+    box-shadow: 0 0 0 1px #2bbcff inset,
+     0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
     background-color: #2bbcff;
     transform: translateY(10px);
   }
@@ -119,3 +180,7 @@ body{
   .hidden{
     display: none;
   }
+
+
+
+  
